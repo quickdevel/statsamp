@@ -1,6 +1,7 @@
 language: go
 
 install:
+  - export GOPATH=$HOME/quickdevel/statsamp
   - go get github.com/go-sql-driver/mysql
   - go get github.com/gorilla/mux
   - go get code.google.com/p/gcfg
@@ -8,7 +9,7 @@ install:
   - go get code.google.com/p/go.text/encoding/charmap
 
 script:
-  - mkdir -p gopath/src/github.com/quickdevel
-  - ln -s ../../../../quickdevel/statsamp/src/statsamp gopath/src/github.com/quickdevel/statsamp
+  - cd $GOPATH
+  - mkdir bin
   - go build -o bin/server github.com/quickdevel/statsamp/server
   - go build -o bin/updater github.com/quickdevel/statsamp/updater
