@@ -1,7 +1,7 @@
 language: go
 
 install:
-  - export GOPATH=$HOME/quickdevel/statsamp
+  - export GOPATH=$HOME/build/quickdevel/statsamp
   - go get github.com/go-sql-driver/mysql
   - go get github.com/gorilla/mux
   - go get code.google.com/p/gcfg
