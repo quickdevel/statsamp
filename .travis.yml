@@ -10,5 +10,5 @@ install:
 script:
   - mkdir -p gopath/src/github.com/quickdevel
   - ln -s ../../../../quickdevel/statsamp/src/statsamp gopath/src/github.com/quickdevel/statsamp
-  - go build -o bin/server statsamp/server
-  - go build -o bin/updater statsamp/updater
+  - go build -o bin/server github.com/quickdevel/statsamp/server
+  - go build -o bin/updater github.com/quickdevel/statsamp/updater
