@@ -1,8 +1,14 @@
 language: go
 
+install:
+  - go get github.com/go-sql-driver/mysql
+  - go get github.com/gorilla/mux
+  - go get code.google.com/p/gcfg
+  - go get code.google.com/p/go.text/transform
+  - go get code.google.com/p/go.text/encoding/charmap
+
 script:
   - mkdir -p gopath/src/github.com/quickdevel
   - ln -s ../../../../quickdevel/statsamp/src/statsamp gopath/src/github.com/quickdevel/statsamp
-  - go get -d ./...
   - go build -o bin/server statsamp/server
   - go build -o bin/updater statsamp/updater
