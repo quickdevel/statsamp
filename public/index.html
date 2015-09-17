@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="San Andreas Multiplayer statistics">
+  <meta name="keywords" content="samp, stats, servers, monitoring">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>statSAMP</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600">
+</head>
+<body class="mdl-color--grey-100">
+  <header class="ss-header">
+    <div class="ss-title">stat<b>SAMP</b></div>
+    <div class="ss-description">San Andreas Multiplayer Statistics</div>
+  </header>
+  <div class="mdl-grid">
+    <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--10-col-desktop mdl-color--white mdl-color-text--grey-700 ss-block">
+      <h4 class="ss-block-header">Servers history</h4>
+      <div class="ss-chart-container">
+        <canvas width="960" height="220" id="servers-history-chart"></canvas>
+      </div>
+      <p class="ss-chart-period">
+        <input id="servers-chart-period" class="mdl-slider mdl-js-slider" type="range" min="1" max="4" value="1">
+        <div id="servers-chart-period-tooltip" class="mdl-tooltip" for="servers-chart-period"></div>
+      </p>
+    </div>
+    <div class="mdl-shadow--2dp mdl-cell mdl-cell--top mdl-cell--12-col mdl-cell--2-col-desktop mdl-color--white mdl-color-text--grey-700 ss-block">
+      <h4 class="ss-block-header-center">Servers</h4>
+      <div class="ss-pie-container">
+        <canvas width="150" height="150" id="servers-pie"></canvas>
+      </div>
+      <dl class="ss-dl">
+        <dt>Total</dt>
+        <dd id="servers-total-count">0</dd>
+        <dt>Active</dt>
+        <dd id="servers-online-count">0</dd>
+        <dt>Inactive</dt>
+        <dd id="servers-offline-count">0</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="mdl-grid">
+    <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--10-col-desktop mdl-color--white mdl-color-text--grey-700 ss-block">
+      <h4 class="ss-block-header">Players history</h4>
+      <div class="ss-chart-container">
+        <canvas width="960" height="220" id="players-history-chart"></canvas>
+      </div>
+      <p class="ss-chart-period">
+        <input id="players-chart-period" class="mdl-slider mdl-js-slider" type="range" min="1" max="4" value="1">
+        <div id="players-chart-period-tooltip" class="mdl-tooltip" for="players-chart-period"></div>
+      </p>
+    </div>
+    <div class="mdl-shadow--2dp mdl-cell mdl-cell--top mdl-cell--12-col mdl-cell--2-col-desktop mdl-color--white mdl-color-text--grey-700 ss-block">
+      <h4 class="ss-block-header-center">Slots</h4>
+      <div class="ss-pie-container">
+        <canvas width="150" height="150" id="players-pie"></canvas>
+      </div>
+      <dl class="ss-dl">
+        <dt>Total</dt>
+        <dd id="slots-total-count">0</dd>
+        <dt>Used</dt>
+        <dd id="slots-used-count">0</dd>
+        <dt>Unused</dt>
+        <dd id="slots-unused-count">0</dd>
+      </dl>
+    </div>
+  </div>
+  <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <p class="mdl-logo">statSAMP &copy; 2015</p>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+      <a href="https://github.com/quickdevel" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">code</i> QuickDevel</a>
+    </div>
+  </footer>
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/chart.js"></script>
+  <script src="scripts/material.min.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+.ss-header {
+	width: 100%;
+	padding: 35px 0;
+	font-family: 'Titillium Web' !important;
+	text-align: center;
+}
+
+.ss-header > .ss-title {
+	font-size: 36px;
+}
+
+.ss-header > .ss-description {
+	font-size: 12px;
+}
+
+.ss-block {
+	padding: 5px 10px;
+}
+
+.ss-block > .ss-block-header, .ss-block > .ss-block-header-center {
+	font-family: 'Titillium Web' !important;
+	border-bottom: 1px dotted #cdcdcd;
+	padding-bottom: 5px;
+}
+
+.ss-block > .ss-block-header-center {
+	text-align: center;
+}
+
+.ss-chart-container {
+	margin: 8px;
+}
+
+.ss-pie-container {
+	text-align: center;
+}
+
+.ss-chart-period {
+	width: 180px;
+	float: right;
+}
+
+.ss-dl dt {
+	float: left;
+	clear: left;
+	width: 45%;
+	text-align: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ss-dl dd {
+	width: 50%;
+	margin-left: 50%;
+	text-align: left;
+}
