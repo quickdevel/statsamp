@@ -11,5 +11,5 @@ install:
 script:
   - cd $GOPATH
   - mkdir bin
-  - go build -o bin/server github.com/quickdevel/statsamp/server
-  - go build -o bin/updater github.com/quickdevel/statsamp/updater
+  - go build -o bin/server statsamp/server
+  - go build -o bin/updater statsamp/updater
