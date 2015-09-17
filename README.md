@@ -1,4 +1,5 @@
 ## statSAMP ##
+[![Build Status](https://travis-ci.org/quickdevel/statsamp.svg)](https://travis-ci.org/quickdevel/statsamp)
 Service created for collection statistics San Andreas Multiplayer (sa-mp.com) servers. List of servers receive from the official master-server (master.sa-mp.com).
 
 
