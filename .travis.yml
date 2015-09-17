@@ -1,0 +1,8 @@
+language: go
+
+script:
+  - mkdir -p gopath/src/github.com/quickdevel
+  - ln -s ../../../../quickdevel/statsamp/src/statsamp gopath/src/github.com/quickdevel/statsamp
+  - go get -d ./...
+  - go build -o bin/server statsamp/server
+  - go build -o bin/updater statsamp/updater
