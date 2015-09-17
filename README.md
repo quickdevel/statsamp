@@ -1,7 +1,7 @@
 ## statSAMP ##
 [![Build Status](https://travis-ci.org/quickdevel/statsamp.svg)](https://travis-ci.org/quickdevel/statsamp)
 
-Service created for collection statistics San Andreas Multiplayer (sa-mp.com) servers. List of servers receive from the official master-server (master.sa-mp.com).
+Service created for collection statistics San Andreas Multiplayer (sa-mp.com) servers. List of servers receive from the official master-server.
 
 
 ----------
@@ -29,3 +29,16 @@ Sample *(update every hour in 55 minutes)*:
 `55 * * * * cd /your_path/statsamp && bin/updater`
  11. Start web-service:
 `bin/server`
+
+
+----------
+
+
+## Master-servers versions ##
+
+ - 0.3e - [0.3.4](http://lists.sa-mp.com/0.3.4/servers)
+ - 0.3x - [0.3.5](http://lists.sa-mp.com/0.3.5/servers) / [0.3.5b](http://lists.sa-mp.com/0.3.5b/servers)
+ - 0.3z - [0.3.6](http://lists.sa-mp.com/0.3.6/servers)
+ - 0.3.7 - [0.3.7](http://lists.sa-mp.com/0.3.7/servers)
+
+You can set required version in statsamp.cfg.
