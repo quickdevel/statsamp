@@ -4,9 +4,9 @@ install:
   - export GOPATH=$HOME/build/quickdevel/statsamp
   - go get github.com/go-sql-driver/mysql
   - go get github.com/gorilla/mux
-  - go get code.google.com/p/gcfg
-  - go get code.google.com/p/go.text/transform
-  - go get code.google.com/p/go.text/encoding/charmap
+  - go get gopkg.in/gcfg.v1
+  - go get golang.org/x/text/transform
+  - go get golang.org/x/text/encoding/charmap
 
 script:
   - cd $GOPATH

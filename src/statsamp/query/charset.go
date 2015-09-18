@@ -3,8 +3,8 @@ package query
 import (
   "strings"
   "io/ioutil"
-  "code.google.com/p/go.text/transform"
-  "code.google.com/p/go.text/encoding/charmap"
+  "golang.org/x/text/transform"
+  "golang.org/x/text/encoding/charmap"
 )
 
 func transformToUTF8(source string) (string, error) {
