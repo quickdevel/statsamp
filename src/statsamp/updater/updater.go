@@ -36,41 +36,41 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
-  // Соединение с БД
+  // Connect to DB
 	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", cfg.DB.User, cfg.DB.Password, cfg.DB.Host, cfg.DB.Database))
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
-  // Загрузка списка серверов с list.sa-mp.com
-  log.Println("Запрос списка серверов с lists.sa-mp.com.")
+  // Request server-list from lists.sa-mp.com
+  log.Println("Download server-list from lists.sa-mp.com.")
   var serversAddr []string
   var currentAddr int
   request := serverlist.NewRequest(cfg.Updater.Version)
   if err := request.Exec(); err != nil {
-    log.Fatal("Ошибка (request.Exec()):", err)
+    log.Fatal("Error (request.Exec()):", err)
   }
   serversAddr, err = request.ReadAll()
   if err != nil {
-    log.Fatal("Ошибка (request.ReadAll()):", err)
+    log.Fatal("Error (request.ReadAll()):", err)
   }
-  // Очистка таблицы в БД
+  // Clear database table
   if err := clearServersInDB(db); err != nil {
-    log.Fatal("Ошибка (clearServersInDB()):", err)
+    log.Fatal("Error (clearServersInDB()):", err)
   }
-  // Создание потоков для сбора статистики
+  // Create threads
   waitGroup.Add(maxQueryThreads)
   for i := 0; i < maxQueryThreads; i++ {
     go processLine(&serversAddr, &currentAddr, &historyResult, db, &waitGroup)
   }
-  // Ожидание завершения потоков
+  // Wait threads
   waitGroup.Wait()
-  // Запись результатов в БД
+  // Write history to database
   writeHistoryToDB(db, &historyResult)
-  // Вывод результатов
-  log.Println("Время выполнения:", time.Since(startTime))
-  log.Println("Серверов онлайн:", historyResult.ServersOnline, "из", historyResult.ServersTotal)
-  log.Println("Слотов занято:", historyResult.SlotsUsed, "из", historyResult.SlotsTotal)
+  // Print results
+  log.Println("Execution time:", time.Since(startTime))
+  log.Println("Servers offline:", historyResult.ServersOnline, "of", historyResult.ServersTotal)
+  log.Println("Slots used:", historyResult.SlotsUsed, "of", historyResult.SlotsTotal)
 }
 
 func writeHistoryToDB(db *sql.DB, result *HistoryResult) {
@@ -118,10 +118,10 @@ func processServerInfo(addr string, result *HistoryResult, db *sql.DB) {
     info, err := query.GetServerInfo(addr, queryTimeout)
     if err != nil {
       if i < maxQueryAttempts {
-        log.Println(addr, " - ошибка. Пробуем еще раз...")
+        log.Println(addr, " - error. Retrying...")
         continue
       } else {
-        log.Println(addr, "- ошибка:", err)
+        log.Println(addr, "- error:", err)
         return
       }
     }
@@ -129,10 +129,10 @@ func processServerInfo(addr string, result *HistoryResult, db *sql.DB) {
     break
   }
   if err := writeServerToDB(db, addr, &srvInfo); err != nil {
-    log.Fatal("Ошибка (writeServerToDB()):", err)
+    log.Fatal("Error (writeServerToDB()):", err)
   }
   result.ServersOnline++
   result.SlotsTotal += srvInfo.MaxPlayers
   result.SlotsUsed += srvInfo.Players
-  log.Println(addr, "- успешно!")
+  log.Println(addr, "- success!")
 }
